@@ -1,0 +1,6 @@
+{
+  "name": "badminscore-mobile",
+  "dependencies": {
+    "topcoat": "~0.8.0"
+  }
+}
