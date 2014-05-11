@@ -4,6 +4,9 @@ module.exports = {
         cwd: "app/",
         src: ['**/*.coffee'],
         dest: '.tmp/app/',
-        ext: '.js'
+        ext: '.js',
+        options: {
+            bare: true
+        }
     }
 };

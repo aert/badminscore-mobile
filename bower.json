@@ -1,6 +1,9 @@
 {
   "name": "badminscore-mobile",
   "dependencies": {
-    "topcoat": "~0.8.0"
+    "jquery": "~2.1.1",
+    "backbone": "~1.1.2",
+    "underscore": "~1.6.0",
+    "Metro-UI-CSS": "~2.0.23"
   }
 }

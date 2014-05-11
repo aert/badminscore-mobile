@@ -1,12 +1,19 @@
 module.exports = {
     main: {
         files: [
-            // Bootstrap Fonts
+            // Fonts
             {
                 expand: true,
-                cwd: "bower_components/bootstrap/dist/fonts/",
+                cwd: "bower_components/Metro-UI-CSS/fonts/",
                 src: "*",
                 dest: "build/static/fonts/"
+            },
+            // App images
+            {
+                expand: true,
+                cwd: "app/styles/images/",
+                src: "*",
+                dest: "build/static/images/"
             }
         ]
     }

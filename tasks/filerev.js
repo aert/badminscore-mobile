@@ -1,6 +1,6 @@
 module.exports = {
     img : {
-        src: 'build/**/*.{jpg,jpeg,gif,png,webp}' 
+        src: 'build/static/images/rev/*.{jpg,jpeg,gif,png,webp}' 
     },
     js : {
         src: 'build/**/*.js' 

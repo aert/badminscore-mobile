@@ -1,5 +1,5 @@
 module.exports = {
-    html: ["build/hello.html"]
+    html: ["build/index.html"]
     //options: {
     //    assetsDir: ["dist/"]
     //}

@@ -1,0 +1,96 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge,chrome=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+
+        title Badminscore
+
+        // build:css static/css/foundations.css
+        link(rel="stylesheet", type="text/css", href="bower_components/Metro-UI-CSS/min/metro-bootstrap.min.css")
+        link(rel="stylesheet", type="text/css", href="bower_components/Metro-UI-CSS/min/metro-bootstrap-responsive.min.css")
+        // endbuild 
+
+        // build:css static/css/application.css
+        link(rel="stylesheet", type="text/css", href=".tmp/app/styles/less/application.css")
+        // endbuild 
+
+        // build:js static/js/foundations.js
+        script(src="bower_components/jquery/dist/jquery.js")
+
+        script(src="bower_components/Metro-UI-CSS/docs/js/jquery/jquery.widget.min.js")
+        script(src="bower_components/Metro-UI-CSS/min/metro.min.js")
+
+        script(src="bower_components/underscore/underscore.js")
+        script(src="bower_components/backbone/backbone.js")
+        // endbuild
+
+        // build:js static/js/application.js 
+        script(src=".tmp/app/routes.js")
+        script(src=".tmp/app/application.js")
+        // endbuild 
+    body.metro
+        //nav.navigation-bar.dark.fixed-top
+        //    nav.navigation-bar-content
+        //        a.element(href="/")
+        //            span.icon-grid-view
+        //            span &nbsp;BADMIN-SCORE
+        //        span.element-divider
+        //        div.element
+        //            a.dropdown-toggle(href="#")
+        //                span Parties en cours
+        //            ul.dropdown-menu(data-role="dropdown")
+        //                li
+        //                    a.menuitem(href="#") 
+        //                        span Jack
+        //                        small.vs vs
+        //                        span Daril
+        //                li
+        //                    a.menuitem(href="#") 
+        //                        span Lea
+        //                        small.vs vs
+        //                        span Angela
+        //                li.divider
+        //                li
+        //                    a.menuitem(href="#") 
+        //                        span Patric <br/> George
+        //                        small.vs vs
+        //                        span Jake <br/> Brown
+        //        span.element-divider
+        //        a.element(href="/")
+        //            span Nouvelle Partie
+        //        a.element.place-right(href="#")
+        //            span.icon-locked-2
+        //        span.element-divider.place-right
+        .container
+            .tile-area
+                h1.tile-area-title.fg-white Scores <sup><small>1.0</small></sup>
+                .user-id
+                    .user-id-image
+                        span.icon-user.no-display1
+                    .user-id-name
+                        span.first-name Valeriy
+                        span.last-name ATRASHCHENKOV 
+                .tile-group.one
+                    a.tile.bg-darkRed(href="#")
+                        .tile-content.icon
+                            i.icon-camera-2
+                        .brand
+                            .label Enregistrer
+                .tile-group.double
+                    .tile-group-title
+                        b Parties en cours
+                    a.tile.double.bg-darkPink(href="#")
+                        .tile-content
+                            .text-center.padding10.ntp
+                                h1.fg-white.no-margin 15-10
+                                p.fg-white.menuitem
+                                    span Carlos B. <br/> Adam C.
+                                    small.vs vs
+                                    span Alexandre H. <br/> Julien F.
+                        .brand
+                            .badge: i.icon-address-book
+                            .label Riedisheim Gambetta
+                       
+
