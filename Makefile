@@ -5,4 +5,4 @@ bootstrap:
 	nodeenv -p
 
 make runserver:
-	python -m SimpleHTTPServer
+	cd build; python -m SimpleHTTPServer
