@@ -1,6 +1,6 @@
 // templates/index.jade
 
-.tile-area
+.tile-area.home
     h1.tile-area-title.fg-white Scores <sup><small>1.0</small></sup>
     .user-id
         .user-id-image
@@ -11,7 +11,7 @@
     .tile-group.one
         a.tile.bg-darkRed(href="#/new-game")
             .tile-content.icon
-                i.icon-camera-2
-            .brand
-                .label Enregistrer
+                i.icon-plus
+            //.brand
+            //    .label Créer
     include ./index_tiles_games

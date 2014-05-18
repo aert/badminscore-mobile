@@ -1,0 +1,54 @@
+// _new_game_home.jade
+
+form
+    fieldset
+        legend Arbitres et terrain
+        label Arbitre
+        .input-control.text(data-role="input-control")
+            input(type="text", placeholder="Arbitre")
+            button.btn-clear(tabindex="-1")
+        label Terrain
+        .input-control.text(data-role="input-control")
+            input(type="text", placeholder="Terrain")
+            button.btn-clear(tabindex="-1")
+
+    br
+    fieldset
+        legend Joueurs
+        div
+            .input-control.radio(data-role="input-control")
+                label
+                    input(type="radio", name="radPlayerCount")
+                    span.check
+                    | Jeu Simple
+            .input-control.radio(data-role="input-control")
+                label
+                    input(type="radio", name="radPlayerCount", checked)
+                    span.check
+                    | Jeu Double
+        h4 Equipe A
+        label Joueur 1
+        .input-control.text(data-role="input-control")
+            input(type="text", placeholder="Joueur 1")
+            button.btn-clear(tabindex="-1")
+        label Joueur 2
+        .input-control.text(data-role="input-control")
+            input(type="text", placeholder="Joueur 2")
+            button.btn-clear(tabindex="-1")
+
+        h4 Equipe B
+        label Joueur 1
+        .input-control.text(data-role="input-control")
+            input(type="text", placeholder="Joueur 1")
+            button.btn-clear(tabindex="-1")
+        label Joueur 2
+        .input-control.text(data-role="input-control")
+            input(type="text", placeholder="Joueur 2")
+            button.btn-clear(tabindex="-1")
+
+        br
+        br
+        button.command-button.primary
+            i.icon-floppy.on-left
+            | Sauvegarder
+            small Commencer la saisie des scores
