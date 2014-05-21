@@ -8,18 +8,18 @@
   "author": "AERT",
   "devDependencies": {
     "bower": "latest",
-    "grunt": "~0.4.2",
+    "grunt": "latest",
     "coffee-script": "latest",
-    "grunt-contrib-copy": "0.5.x",
-    "grunt-contrib-clean": "0.5.x",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-clean": "latest",
     "grunt-contrib-concat": "latest",
     "grunt-contrib-jade": "latest",
     "grunt-contrib-coffee": "latest",
-    "grunt-contrib-less": "0.11.x",
-    "grunt-contrib-uglify": "0.4.x",
-    "grunt-contrib-cssmin": "0.9.x",
-    "grunt-filerev": "0.2.x",
-    "grunt-usemin": "2.1.x",
-    "grunt-contrib-watch": "0.6.x"
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-filerev": "latest",
+    "grunt-usemin": "latest",
+    "grunt-contrib-watch": "latest"
   }
 }

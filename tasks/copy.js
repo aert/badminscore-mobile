@@ -5,7 +5,12 @@ module.exports = {
             {
                 expand: true,
                 cwd: "bower_components/Metro-UI-CSS/fonts/",
-                src: "*",
+                src: [ 
+                    "iconFont.eot",
+                    "iconFont.svg",
+                    "iconFont.ttf",
+                    "iconFont.woff"
+                ],
                 dest: "build/static/fonts/"
             },
             // App images
