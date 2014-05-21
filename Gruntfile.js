@@ -25,7 +25,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-    //grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-usemin');
 
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
         "jade",
         "useminPrepare",
         "concat",
-        //"uglify",
+        "uglify",
         "cssmin",
         "filerev",
         "usemin"
