@@ -23,11 +23,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jade');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-filerev');
     grunt.loadNpmTasks('grunt-usemin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Tasks
     grunt.registerTask('default', [
@@ -41,8 +41,8 @@ module.exports = function(grunt) {
         "uglify",
         "cssmin",
         "filerev",
-        "usemin"
-        //"watch"
+        "usemin",
+        "watch"
     ]);
 
 };
