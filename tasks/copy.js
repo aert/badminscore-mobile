@@ -19,6 +19,11 @@ module.exports = {
                 cwd: "app/styles/images/",
                 src: "*",
                 dest: "build/static/images/"
+            },
+            // Favicon
+            {
+                src: "app/favicon.ico",
+                dest: "build/favicon.ico"
             }
         ]
     }
