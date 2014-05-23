@@ -1,17 +1,13 @@
 // templates/index.jade
 
-.tile-area.home
-    h1.tile-area-title.fg-white Scores <sup><small>1.0</small></sup>
-    .user-id
-        .user-id-image
-            span.icon-user.no-display1
-        .user-id-name.no-phone-portrait
-            span.first-name Valeriy
-            span.last-name ATRASHCHENKOV 
-    .tile-group.one
-        a.tile.bg-darkRed(href="#/new-game")
-            .tile-content.icon
-                i.icon-plus
-            //.brand
-            //    .label Créer
-    include ./index_tiles_games
+    .tile-area.home
+        h1.tile-area-title.fg-white Scores <sup><small>1.0</small></sup>
+        .user-id
+            .user-id-image
+                span.icon-user.no-display1
+            .user-id-name.no-phone-portrait
+                span.first-name Valeriy
+                span.last-name ATRASHCHENKOV 
+
+
+include ./index_tiles_games

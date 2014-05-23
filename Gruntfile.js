@@ -41,8 +41,7 @@ module.exports = function(grunt) {
         "uglify",
         "cssmin",
         "filerev",
-        "usemin",
-        "watch"
+        "usemin"
     ]);
 
 };

@@ -1,59 +1,65 @@
 // tiles_games.jade
-.tile-group.expand
-   .tile-group-title
-       b Parties en cours
-    a.tile.double.bg-darkPink(href="#")
-        .tile-content
-            .text-center.padding10.ntp
-                h1.fg-white.no-margin 15 - 10
-                p.fg-white.menuitem
-                    span Carlos B. <br/> Adam C.
-                    small.vs vs
-                    span Alexandre H. <br/> Julien F.
-        .brand
-            .badge: i.icon-address-book
-            .label Riedisheim Gambetta
-    a.tile.double.bg-violet(href="#")
-        .tile-content
-            .text-center.padding10.ntp
-                h1.fg-white.no-margin 12 - 4
-                p.fg-white.menuitem
-                    span Romain S.
-                    small.vs vs
-                    span Lorraine B.
-        .brand
-            .badge: i.icon-user
-            .label Habsheim
-    a.tile.double.bg-violet(href="#")
-        .tile-content
-            .text-center.padding10.ntp
-                h1.fg-white.no-margin 9 - 10
-                p.fg-white.menuitem
-                    span Samuel E.
-                    small.vs vs
-                    span  Nicolas H.
-        .brand
-            .badge: i.icon-user
-            .label 1
-    a.tile.double.bg-violet(href="#")
-        .tile-content
-            .text-center.padding10.ntp
-                h1.fg-white.no-margin 3 - 4
-                p.fg-white.menuitem
-                    span Valérie A.
-                    small.vs vs
-                    span  Katia N.
-        .brand
-            .badge: i.icon-user
-            .label ASPTT Strasbourg
-    a.tile.double.bg-violet(href="#")
-        .tile-content
-            .text-center.padding10.ntp
-                h1.fg-white.no-margin 13 - 0
-                p.fg-white.menuitem
-                    span Christophe B.
-                    small.vs vs
-                    span  Marianne N.
-        .brand
-            .badge: i.icon-user
-            .label ASPTT Strasbourg
+.row
+   .col-sm-6
+       .panel.panel-default
+           .panel-body
+               small.text-muted Service : 
+                   b.text-success Carlos B.
+               .text-center
+                   h1 15 - 10
+                   p.menuitem.text-muted
+                       span Carlos B. <br/> Adam C.
+                       small.vs vs
+                       span Alexandre H. <br/> Julien F.
+           .panel-footer.text-center
+               span Riedisheim Gambetta
+   .col-sm-6
+       .panel.panel-default
+           .panel-body
+               small.text-muted Service : 
+                   b.text-success Romain S.
+               .text-center
+                   h1 12 - 4
+                   p.menuitem.text-muted
+                       span Romain S.
+                       small.vs vs
+                       span Lorraine B.
+           .panel-footer Habsheim
+.row
+   .col-sm-6
+       .panel.panel-default
+           .panel-body
+               small.text-muted Service : 
+                   b.text-success Nicolas H.
+               .text-center
+                   h1 9 - 10
+                   p.menuitem.text-muted
+                       span Samuel E.
+                       small.vs vs
+                       span  Nicolas H.
+           .panel-footer 1
+   .col-sm-6
+       .panel.panel-default
+           .panel-body
+               small.text-muted Service : 
+                   b.text-success Katia N.
+               .text-center
+                   h1 3 - 4
+                   p.menuitem.text-muted
+                       span Valérie A.
+                       small.vs vs
+                       span  Katia N.
+           .panel-footer ASPTT Strasbourg
+.row
+   .col-sm-6
+       .panel.panel-default
+           .panel-body
+               small.text-muted Service : 
+                   b.text-success Christophe B.
+               .text-center
+                   h1 13 - 0
+                   p.menuitem.text-muted
+                       span Christophe B.
+                       small.vs vs
+                       span  Marianne N.
+           .panel-footer ASPTT Strasbourg
