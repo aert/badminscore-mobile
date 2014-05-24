@@ -16,11 +16,11 @@ html
 
         // build:js static/js/foundations.js
         script(src="bower_components/jquery/dist/jquery.js")
+        script(src="bower_components/underscore/underscore.js")
+        script(src="bower_components/backbone/backbone.js")
 
         script(src="bower_components/bootstrap/bootstrap.min.js")
 
-        script(src="bower_components/underscore/underscore.js")
-        script(src="bower_components/backbone/backbone.js")
         // endbuild
 
         // build:js static/js/application.js 
@@ -53,7 +53,8 @@ html
                         | &nbsp; Nouvelle Partie
             br
             br
-            #content
+            #content.et-wrapper(et-in="rotateSlideIn", et-out="rotateSlideOut")
+                
 
         script(type="text/template", id="index-tpl")
             include templates/index

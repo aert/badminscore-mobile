@@ -10,24 +10,15 @@ class Badminscore.Extensions.View extends Backbone.View
             this.$el.addClass('page')
         return this
 
-    transitionIn: (callback) ->
+    transitionIn: (options, callback) ->
         view = this
         
-        transitionIn = () ->
-            view.$el.addClass('is-visible')
-            view.$el.on('transitionend', () ->
-                if _.isFunction(callback)
-                    callback()
-            )
-
-        _.delay(transitionIn, 20)
+        if options.noPrevious == true
+            view.$el.fadeOut('slow', callback)
+        else
+            view.$el.show(callback)
 
     transitionOut: (callback) ->
         view = this
 
-        view.$el.removeClass('is-visible')
-        view.$el.on('transitionend', () ->
-            if _.isFunction(callback)
-                callback()
-        )
-
+        view.$el.slideUp(callback)
