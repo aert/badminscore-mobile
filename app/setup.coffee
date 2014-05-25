@@ -1,4 +1,0 @@
-
-
-$ ->
-    Badminscore.run()

@@ -1,11 +1,22 @@
 # app.js
 
-Badminscore = {
-    Views: {}
-    Extensions: {}
-    Router: null
+# Namespace
+Badminscore = new Backbone.Marionette.Application()
+Badminscore.Views = {}
+Badminscore.controller = null
+Badminscore.router = null
+Badminscore.layout = null
 
-    run: () ->
-        this.instance = new Badminscore.Views.App()
-        Backbone.history.start()
-}
+# Regions
+Badminscore.addRegions(
+    rgNavigation: "#navigation"
+    rgContent: "#content"
+)
+
+# Initializer
+Badminscore.addInitializer((options) ->
+    Badminscore.controller = new Badminscore.MainController()
+    Badminscore.router = new Badminscore.MainRouter(controller: Badminscore.controller)
+
+    Backbone.history.start()
+)

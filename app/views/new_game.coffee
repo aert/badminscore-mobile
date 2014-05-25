@@ -1,10 +1,9 @@
 # Badminscore.Views.NewGame
 
-class Badminscore.Views.NewGame extends Badminscore.Extensions.View
-    className: 'new-game'
+class Badminscore.Views.NewGame extends Backbone.Marionette.View
+    className: 'view-newGame'
 
     render: () ->
-        template = _.template($('#new-game-tpl').html())
+        template = _.template($('#template-newGame').html())
         this.$el.html(template)
-        
-        return Badminscore.Extensions.View.prototype.render.apply(this, arguments)
+        return this

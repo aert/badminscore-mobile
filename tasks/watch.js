@@ -1,14 +1,14 @@
 module.exports = {
     coffee: {
         files: ["app/**/*.coffee", "app/**/*.js"],
-        tasks: "default"
+        tasks: "dev"
     },
     less: {
         files: ["app/**/*.less", "app/**/*.css"],
-        tasks: "default"
+        tasks: "dev"
     },
     jade: {
         files: ["app/**/*.jade", "app/**/*.html"],
-        tasks: ["default"]
+        tasks: ["dev"]
     }
 };

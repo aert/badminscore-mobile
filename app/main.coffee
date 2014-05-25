@@ -1,0 +1,4 @@
+
+
+$ ->
+    Badminscore.start()

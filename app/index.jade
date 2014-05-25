@@ -19,44 +19,40 @@ html
         script(src="bower_components/underscore/underscore.js")
         script(src="bower_components/backbone/backbone.js")
 
-        script(src="bower_components/bootstrap/bootstrap.min.js")
+        script(src="bower_components/backbone.babysitter/lib/backbone.babysitter.min.js")
+        script(src="bower_components/backbone.wreqr/lib/backbone.wreqr.min.js")
+        script(src="bower_components/marionette/lib/backbone.marionette.min.js")
+
+        script(src="bower_components/bootstrap/dist/js/bootstrap.min.js")
 
         // endbuild
 
         // build:js static/js/application.js 
         script(src=".tmp/app/app.js")
-        script(src=".tmp/app/routes.js")
-        script(src=".tmp/app/extensions.js")
-        script(src=".tmp/app/views/app.js")
+        script(src=".tmp/app/router.js")
+        script(src=".tmp/app/controller.js")
+        script(src=".tmp/app/views/navigation.js")
         script(src=".tmp/app/views/index.js")
         script(src=".tmp/app/views/new_game.js")
-        script(src=".tmp/app/setup.js")
+        script(src=".tmp/app/main.js")
         // endbuild 
     body
         .container
             .page-header
                 h1 Scores <sup><small>1.0</small></sup>
-            ul.nav.nav-pills
-                li.active
-                    a(href="#")
-                        span.glyphicon.glyphicon-play-circle
-                        | &nbsp; Parties en cours
-                        span.badge 5
-                li
-                    a(href="#") 
-                        span.glyphicon.glyphicon-time
-                        | &nbsp; Parties terminées
-                        span.badge 3
-                li
-                    a(href="#new-game")
-                        span.glyphicon.glyphicon-plus
-                        | &nbsp; Nouvelle Partie
-            br
-            br
-            #content.et-wrapper(et-in="rotateSlideIn", et-out="rotateSlideOut")
                 
+            #navigation
 
-        script(type="text/template", id="index-tpl")
+            br
+            br
+
+            #content
+
+        // ### Templates ######################################################
+
+        script(type="text/template", id="template-navigation")
+            include templates/_layout_nav
+        script(type="text/template", id="template-index")
             include templates/index
-        script(type="text/template", id="new-game-tpl")
+        script(type="text/template", id="template-newGame")
             include templates/new_game

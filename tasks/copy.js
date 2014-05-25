@@ -21,5 +21,21 @@ module.exports = {
                 dest: "build/favicon.ico"
             }
         ]
+    },
+    dev: {
+        files: [
+            {
+                src: ".tmp/**",
+                dest: "build/"
+            },
+            {
+                src: "bower_components/**",
+                dest: "build/"
+            },
+            {
+                src: "app/styles/**",
+                dest: "build/.tmp/"
+            },
+        ]
     }
 };

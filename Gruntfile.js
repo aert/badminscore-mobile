@@ -32,7 +32,7 @@ module.exports = function(grunt) {
     // Tasks
     grunt.registerTask('default', [
         "clean:build",
-        "copy",
+        "copy:main",
         "less",
         "coffee",
         "jade",
@@ -42,6 +42,14 @@ module.exports = function(grunt) {
         "cssmin",
         "filerev",
         "usemin"
+    ]);
+    grunt.registerTask( 'dev', [
+        "clean:build",
+        "copy:main",
+        "less",
+        "coffee",
+        "jade",
+        "copy:dev"
     ]);
 
 };
