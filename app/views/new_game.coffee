@@ -12,6 +12,7 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
     events:
         "click .radPlayerCount": "onSwitchGameType"
         "click #btnNewGameFirst": "onBtnNewGameFirst"
+        "change #servicePlayer": "onServicePlayerChanged"
 
     # -- Binding --------------------------------------------------------------
     bindings:
@@ -33,8 +34,6 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         '#playerB2Firstname': 'playerB2Firstname'
         '#playerB2Surname': 'playerB2Surname'
 
-        '#servicePlayer': 'servicePlayer'
-        '#receiverPlayer': 'receiverPlayer'
 
     # -- Events ---------------------------------------------------------------
     onSwitchGameType: () ->
@@ -55,6 +54,7 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
             this.$el.find(".new_game_simple").fadeIn(duration: 1500)
 
     onBtnNewGameFirst: () ->
+        this.bindConfirmForm()
         this.$el.find('#newGameConfirm').modal()
 
 
@@ -72,7 +72,25 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         else
             this.$el.find("#btnNewGameFirst").attr("disabled", "disabled")
 
+    onServicePlayerChanged: () ->
+        newValue = parseInt(this.$el.find("#servicePlayer").val())
+        console.log('onServicePlayerChanged: ' + newValue)
+
+        if newValue < 1
+            @model.set("servicePlayer", 0)
+            this.$el.find("#newGameFormReceiver").hide()
+            return
         
+        @model.set("servicePlayer", newValue)
+        this.$el.find("#newGameFormReceiver").fadeIn(duration: 1500)
+        
+        
+    bindConfirmForm: () ->
+        console.log('bindConfirmForm')
+
+        $select = this.$el.find('#servicePlayer').first()
+        @model.bindServiceOptions($select)
+
 
     # -- Render ---------------------------------------------------------------
     render: () ->
