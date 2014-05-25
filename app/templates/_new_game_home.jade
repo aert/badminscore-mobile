@@ -1,66 +1,61 @@
 // _new_game_home.jade
 
-form
-    fieldset
-        legend Arbitres et terrain
-        label Arbitre
-        .input-control.text.size4(data-role="input-control")
-            input(type="text", placeholder="Arbitre")
-            button.btn-clear(tabindex="-1")
-        label Terrain
-        .input-control.text.size4(data-role="input-control")
-            input(type="text", placeholder="Terrain")
-            button.btn-clear(tabindex="-1")
+.well
+    form.form-horizontal(role="form")
+        fieldset
+            legend Terrain
+            .form-group
+                label.col-sm-2.control-label Arbitre
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Nom")
+            .form-group
+                label.col-sm-2.control-label Terrain
+                .col-sm-10
+                    input.form-control(type="text", placeholder="Terrain")
+            .form-group
+                label.col-sm-2.control-label Catégorie
+                .col-sm-10
+                    .radio
+                        label
+                            input(type="radio", name="radPlayerCount")
+                            | Jeu Simple
+                    .radio
+                        label
+                            input(type="radio", name="radPlayerCount", checked)
+                            | Jeu Double
 
-    br
-    fieldset
-        legend Joueurs
-        div
-            .input-control.radio(data-role="input-control")
-                label
-                    input(type="radio", name="radPlayerCount")
-                    span.check
-                    | Jeu Simple
-            .input-control.radio(data-role="input-control")
-                label
-                    input(type="radio", name="radPlayerCount", checked)
-                    span.check
-                    | Jeu Double
-        h4 Equipe A
-        label Joueur 1
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 1 - Prénom")
-            button.btn-clear(tabindex="-1")
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 1 - Nom")
-            button.btn-clear(tabindex="-1")
-        label Joueur 2
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 2 - Prénom")
-            button.btn-clear(tabindex="-1")
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 2 - Nom")
-            button.btn-clear(tabindex="-1")
+        fieldset
+            legend Equipe A
+            .form-group
+                label.col-sm-2.control-label Joueur 1
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 1 - Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 1 - Nom")
+            .form-group
+                label.col-sm-2.control-label Joueur 2
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 2 - Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 2 - Nom")
 
-        h4 Equipe B
-        label Joueur 1
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 1 - Prénom")
-            button.btn-clear(tabindex="-1")
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 1 - Nom")
-            button.btn-clear(tabindex="-1")
-        label Joueur 2
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 2 - Prénom")
-            button.btn-clear(tabindex="-1")
-        .input-control.text.size2(data-role="input-control")
-            input(type="text", placeholder="Joueur 2 - Nom")
-            button.btn-clear(tabindex="-1")
+        fieldset
+            legend Equipe B
+            .form-group
+                label.col-sm-2.control-label Joueur 1
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 1 - Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 1 - Nom")
+            .form-group
+                label.col-sm-2.control-label Joueur 2
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 2 - Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 2 - Nom")
 
-        br
-        br
-        button.command-button.primary
-            i.icon-floppy.on-left
-            | Sauvegarder
-            small Commencer la saisie des scores
+            br
+            .col-lg-10.col-lg-offset-2
+                button.btn.btn-primary.btn-lg.btn-block(type="button") Continuer
