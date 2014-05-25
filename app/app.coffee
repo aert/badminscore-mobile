@@ -2,6 +2,7 @@
 
 # Namespace
 Badminscore = new Backbone.Marionette.Application()
+Badminscore.Models = {}
 Badminscore.Views = {}
 Badminscore.controller = null
 Badminscore.router = null

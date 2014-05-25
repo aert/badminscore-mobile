@@ -4,18 +4,24 @@ class Badminscore.MainController extends Backbone.Marionette.Controller
 
     initialize: () ->
         @currentPage = null
-        Badminscore.rgNavigation.show(new Badminscore.Views.Navigation())
+
+        @modelNavigation = new Badminscore.Models.Navigation()
+        @viewNavigation = new Badminscore.Views.Navigation(@modelNavigation)
+
+        Badminscore.rgNavigation.show(@viewNavigation)
 
     # -- Views ----------------------------------------------------------------
     showIndex: () ->
         view = new Badminscore.Views.Index()
-        this.gotoPage(view)
+        this.gotoPage(view, 'nav-ongoing')
 
     showNewGame: () ->
         view = new Badminscore.Views.NewGame()
-        this.gotoPage(view)
+        this.gotoPage(view, 'nav-new')
 
     # -- Private Methods ------------------------------------------------------
-    gotoPage: (view) ->
+    gotoPage: (view, navId) ->
         Badminscore.rgContent.show(view)
         @currentPage = view
+
+        @modelNavigation.set({selectedId: navId})

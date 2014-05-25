@@ -1,17 +1,20 @@
 // _layout_nav.jade
 
 ul.nav.nav-pills
-    li.active
-        a(href="#")
-            span.glyphicon.glyphicon-play-circle
-            | &nbsp; Parties en cours
-            span.badge 5
-    li
-        a(href="#") 
-            span.glyphicon.glyphicon-time
-            | &nbsp; Parties terminées
-            span.badge 3
-    li
-        a(href="#new-game")
-            span.glyphicon.glyphicon-plus
-            | &nbsp; Nouvelle Partie
+    | <li class="<%= model.getFlagActive('nav-ongoing') %>">
+    a(href="#")
+        span.glyphicon.glyphicon-play-circle
+        | &nbsp; Parties en cours
+        span.badge 5
+    | </li>
+    | <li class="<%= model.getFlagActive('nav-done') %>">
+    a(href="#") 
+        span.glyphicon.glyphicon-time
+        | &nbsp; Parties terminées
+        span.badge 3
+    | </li>
+    | <li class="<%= model.getFlagActive('nav-new') %>">
+    a(href="#new-game")
+        span.glyphicon.glyphicon-plus
+        | &nbsp; Nouvelle Partie
+    | </li>
