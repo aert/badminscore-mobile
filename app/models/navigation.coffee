@@ -2,9 +2,8 @@
 
 class Badminscore.Models.Navigation extends Backbone.Model
 
-    #selectedId
-    
     initialize: () ->
+        #selectedId
         this.setNavOngoing()
 
     getFlagActive: (id) ->

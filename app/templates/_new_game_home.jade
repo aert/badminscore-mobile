@@ -19,14 +19,31 @@
                 .col-sm-10
                     .radio
                         label
-                            input(type="radio", name="radPlayerCount")
+                            input.radPlayerCount(type="radio", name="radPlayerCount", value="simple")
                             | Jeu Simple
                     .radio
                         label
-                            input(type="radio", name="radPlayerCount", checked)
+                            input.radPlayerCount(type="radio", name="radPlayerCount", value="double")
                             | Jeu Double
 
-        fieldset
+        // -- SIMPLE ----------------------------------------------------------
+        fieldset.new_game_simple(style="display:none")
+            legend Joueurs
+            .form-group
+                label.col-sm-2.control-label Joueur 1
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 1 - Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 1 - Nom")
+            .form-group
+                label.col-sm-2.control-label Joueur 2
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 2 - Prénom")
+                .col-sm-5
+                    input.form-control(type="text", placeholder="Joueur 2 - Nom")
+
+        // -- DOUBLE ----------------------------------------------------------
+        fieldset.new_game_double(style="display:none")
             legend Equipe A
             .form-group
                 label.col-sm-2.control-label Joueur 1
@@ -41,7 +58,7 @@
                 .col-sm-5
                     input.form-control(type="text", placeholder="Joueur 2 - Nom")
 
-        fieldset
+        fieldset.new_game_double(style="display:none")
             legend Equipe B
             .form-group
                 label.col-sm-2.control-label Joueur 1
@@ -56,6 +73,32 @@
                 .col-sm-5
                     input.form-control(type="text", placeholder="Joueur 2 - Nom")
 
-            br
-            .col-lg-10.col-lg-offset-2
-                button.btn.btn-primary.btn-lg.btn-block(type="button") Continuer
+            // -- CONTINUE ----------------------------------------------------
+        //fieldset
+            .col-sm-10.col-sm-offset-2
+        .form-group
+            .col-sm-12
+                hr
+                button#btnNewGameFirst.btn.btn-primary.btn-lg.btn-block(type="button", disabled="disabled") Continuer
+
+#newGameConfirm.modal.fade
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type="button", data-dismiss="modal", aria-hidden="true") 
+                    span.text-warning &times;
+                h4.modal-title Service et Réception
+            .modal-body
+                .well
+                    form.form-horizontal(role="form")
+                        .form-group
+                            label.col-sm-2.control-label Service
+                            .col-sm-10
+                                select#newGameSelectService.form-control
+                        #ewGameFormReception.form-group(style="display:none")
+                            label.col-sm-2.control-label Réception
+                            .col-sm-10
+                                select#newGameSelectReceiver.form-control
+            .modal-footer
+                button.btn.btn-default(type="button", data-dismiss="modal") Annuler
+                button#btnNewGameSecond.btn.btn-primary(type="button") Sauvegarder
