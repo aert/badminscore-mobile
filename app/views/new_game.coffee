@@ -5,18 +5,45 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
 
     initialize: (model) ->
         @model = model
-        this.listenTo(@model, "change:isTypeDouble", this.onGameDataChanged)
+        this.listenTo(@model, "change", this.onGameDataChanged)
+
+        @changesCount = 0
 
     events:
         "click .radPlayerCount": "onSwitchGameType"
         "click #btnNewGameFirst": "onBtnNewGameFirst"
 
+    # -- Binding --------------------------------------------------------------
+    bindings:
+        '#refereeFirstname': 'refereeFirstname'
+        '#refereeSurname': 'refereeSurname'
+        '#gameField': 'field'
+
+        '#player1Firstname': 'player1Firstname'
+        '#player1Surname': 'player1Surname'
+        '#player2Firstname': 'player2Firstname'
+        '#player2Surname': 'player2Surname'
+
+        '#playerA1Firstname': 'playerA1Firstname'
+        '#playerA1Surname': 'playerA1Surname'
+        '#playerA2Firstname': 'playerA2Firstname'
+        '#playerA2Surname': 'playerA2Surname'
+        '#playerB1Firstname': 'playerB1Firstname'
+        '#playerB1Surname': 'playerB1Surname'
+        '#playerB2Firstname': 'playerB2Firstname'
+        '#playerB2Surname': 'playerB2Surname'
+
+        '#servicePlayer': 'servicePlayer'
+        '#receiverPlayer': 'receiverPlayer'
+
     # -- Events ---------------------------------------------------------------
     onSwitchGameType: () ->
-        this.onGameDataChanged()
-
         radValue = this.$el.find("input[name=radPlayerCount]:checked").val()
-        isDouble = radValue == "double"
+
+        if !!radValue
+            isDouble = radValue == "double"
+        else
+            isDouble = null
 
         @model.set(isTypeDouble: isDouble)
 
@@ -32,9 +59,12 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
 
 
     onGameDataChanged: () ->
+        @changesCount++
+        console.log('changes: ' + @changesCount)
+
         enableBtnNewGameFirst = false
 
-        hasRadValue = !!this.$el.find("input[name=radPlayerCount]:checked").val()
+        hasRadValue = @model.get("isTypeDouble") != null
         enableBtnNewGameFirst = hasRadValue
 
         if enableBtnNewGameFirst
@@ -48,4 +78,5 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
     render: () ->
         template = _.template($('#template-newGame').html())
         this.$el.html(template)
+        this.stickit()
         return this

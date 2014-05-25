@@ -7,13 +7,13 @@
             .form-group
                 label.col-sm-2.control-label Arbitre
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Prénom")
+                    input#refereeFirstname.form-control(type="text", placeholder="Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Nom")
+                    input#refereeSurname.form-control(type="text", placeholder="Nom")
             .form-group
                 label.col-sm-2.control-label Terrain
                 .col-sm-10
-                    input.form-control(type="text", placeholder="Terrain")
+                    input#gameField.form-control(type="text", placeholder="Terrain")
             .form-group
                 label.col-sm-2.control-label Catégorie
                 .col-sm-10
@@ -32,15 +32,15 @@
             .form-group
                 label.col-sm-2.control-label Joueur 1
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 1 - Prénom")
+                    input#player1Firstname.form-control(type="text", placeholder="Joueur 1 - Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 1 - Nom")
+                    input#player1Surname.form-control(type="text", placeholder="Joueur 1 - Nom")
             .form-group
                 label.col-sm-2.control-label Joueur 2
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 2 - Prénom")
+                    input#player2Firstname.form-control(type="text", placeholder="Joueur 2 - Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 2 - Nom")
+                    input#player2Surname.form-control(type="text", placeholder="Joueur 2 - Nom")
 
         // -- DOUBLE ----------------------------------------------------------
         fieldset.new_game_double(style="display:none")
@@ -48,30 +48,30 @@
             .form-group
                 label.col-sm-2.control-label Joueur 1
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 1 - Prénom")
+                    input#playerA1Firstname.form-control(type="text", placeholder="Joueur 1 - Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 1 - Nom")
+                    input#playerA1Surname.form-control(type="text", placeholder="Joueur 1 - Nom")
             .form-group
                 label.col-sm-2.control-label Joueur 2
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 2 - Prénom")
+                    input#playerA2Firstname.form-control(type="text", placeholder="Joueur 2 - Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 2 - Nom")
+                    input#playerA2Surname.form-control(type="text", placeholder="Joueur 2 - Nom")
 
         fieldset.new_game_double(style="display:none")
             legend Equipe B
             .form-group
                 label.col-sm-2.control-label Joueur 1
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 1 - Prénom")
+                    input#playerB1Firstname.form-control(type="text", placeholder="Joueur 1 - Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 1 - Nom")
+                    input#playerB1Surname.form-control(type="text", placeholder="Joueur 1 - Nom")
             .form-group
                 label.col-sm-2.control-label Joueur 2
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 2 - Prénom")
+                    input#playerB2Firstname.form-control(type="text", placeholder="Joueur 2 - Prénom")
                 .col-sm-5
-                    input.form-control(type="text", placeholder="Joueur 2 - Nom")
+                    input#playerB2Surname.form-control(type="text", placeholder="Joueur 2 - Nom")
 
             // -- CONTINUE ----------------------------------------------------
         //fieldset
@@ -86,7 +86,7 @@
         .modal-content
             .modal-header
                 button.close(type="button", data-dismiss="modal", aria-hidden="true") 
-                    span.text-warning &times;
+                    span.text-muted &times;
                 h4.modal-title Service et Réception
             .modal-body
                 .well
