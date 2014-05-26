@@ -5,14 +5,17 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
 
     initialize: (model) ->
         @model = model
-        this.listenTo(@model, "change", this.onGameDataChanged)
+        this.listenTo(@model, "change", this.onModelChanged)
+        this.listenTo(@model, "change:servicePlayer", this.onModelServicePlayerChanged)
+        this.listenTo(@model, "change:receiverPlayer", this.onModelReceiverPlayerChanged)
 
         @changesCount = 0
 
     events:
         "click .radPlayerCount": "onSwitchGameType"
         "click #btnNewGameFirst": "onBtnNewGameFirst"
-        "change #servicePlayer": "onServicePlayerChanged"
+        "change #servicePlayer": "onSelectServicePlayerChanged"
+        "change #receiverPlayer": "onSelectReceiverPlayerChanged"
 
     # -- Binding --------------------------------------------------------------
     bindings:
@@ -57,11 +60,21 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         this.bindConfirmForm()
         this.$el.find('#newGameConfirm').modal()
 
+    onSelectServicePlayerChanged: () ->
+        newValue = parseInt(this.$el.find("#servicePlayer").val()) or 0
+        @model.set("servicePlayer", newValue)
+        this.$el.find("#receiverPlayer").val($("#receiverPlayer option:first").val())
+        
 
-    onGameDataChanged: () ->
+    onSelectReceiverPlayerChanged: () ->
+        newValue = parseInt(this.$el.find("#receiverPlayer").val()) or 0
+        @model.set("receiverPlayer", newValue)
+
+    # -- Model Changes --------------------------------------------------------
+    
+    onModelChanged: () ->
         @changesCount++
         console.log('changes: ' + @changesCount)
-
         enableBtnNewGameFirst = false
 
         hasRadValue = @model.get("isTypeDouble") != null
@@ -72,25 +85,29 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         else
             this.$el.find("#btnNewGameFirst").attr("disabled", "disabled")
 
-    onServicePlayerChanged: () ->
-        newValue = parseInt(this.$el.find("#servicePlayer").val())
-        console.log('onServicePlayerChanged: ' + newValue)
+    onModelServicePlayerChanged: () ->
+        servicePlayer = @model.get("servicePlayer") or 0
 
-        if newValue < 1
-            @model.set("servicePlayer", 0)
+        $select = this.$el.find('#receiverPlayer').first()
+        @model.bindReceiverOptions($select)
+
+        if servicePlayer < 1
             this.$el.find("#newGameFormReceiver").hide()
-            return
+        else
+            this.$el.find("#newGameFormReceiver").fadeIn(duration: 1500)
         
-        @model.set("servicePlayer", newValue)
-        this.$el.find("#newGameFormReceiver").fadeIn(duration: 1500)
-        
+    onModelReceiverPlayerChanged: () ->
+        receiverPlayer = @model.get("receiverPlayer") or 0
+        console.log("onModelReceiverPlayerChanged" + receiverPlayer)
+
+        if receiverPlayer < 1
+            this.$el.find("#btnNewGameSecond").attr("disabled", "disabled")
+        else
+            this.$el.find("#btnNewGameSecond").removeAttr("disabled")
         
     bindConfirmForm: () ->
-        console.log('bindConfirmForm')
-
         $select = this.$el.find('#servicePlayer').first()
         @model.bindServiceOptions($select)
-
 
     # -- Render ---------------------------------------------------------------
     render: () ->

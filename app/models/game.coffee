@@ -27,14 +27,7 @@ class Badminscore.Models.Game extends Backbone.Model
         servicePlayer: 0
         receiverPlayer: 0
 
-    bindServiceOptions: ($select) ->
-        $select.empty()
-        this.set("servicePlayer", 0)
-        this.set("receiverPlayer", 0)
-
-        if this.get("isTypeDouble") == null
-            return
-
+    getOptList: () ->
         optList = []
         optList.push('---')
 
@@ -46,8 +39,63 @@ class Badminscore.Models.Game extends Backbone.Model
             optList.push(this.get("playerA2Firstname") + " " + this.get("playerA2Surname"))
             optList.push(this.get("playerB1Firstname") + " " + this.get("playerB1Surname"))
             optList.push(this.get("playerB2Firstname") + " " + this.get("playerB2Surname"))
+
+        return optList
+
+
+    bindServiceOptions: ($select) ->
+        $select.empty()
+        this.set("servicePlayer", 0)
+        this.set("receiverPlayer", 0)
+
+        if this.get("isTypeDouble") == null
+            return
+
+        optList = this.getOptList()
         
         i = 0
         for opt in optList
             $select.append($("<option />").val(i).text(opt))
             i++
+
+    bindReceiverOptions: ($select) ->
+        $select.empty()
+        this.set("receiverPlayer", 0)
+
+        idxService = this.get("servicePlayer") or 0
+        
+        if idxService == 0
+            return
+
+        optList = this.getOptList()
+
+        # Type Simple
+        if this.get("isTypeDouble") == false
+            idxOtherPlayer = if idxService == 1 then 2 else 1
+            otherPlayer = optList[idxOtherPlayer]
+            $select.append(
+                $("<option />")
+                .val(idxOtherPlayer)
+                .text(otherPlayer)
+            )
+            this.set("receiverPlayer", idxOtherPlayer)
+            return
+
+        # Type Double
+        $select.append($("<option />") .val(0).text("---"))
+
+        if idxService >= 3
+            idxOtherPlayers = [1, 2]
+        else
+            idxOtherPlayers = [3, 4]
+        
+        for idx in idxOtherPlayers
+            $select.append(
+                $("<option />")
+                .val(idx)
+                .text(optList[idx])
+            )
+        return
+
+
+
