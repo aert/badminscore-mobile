@@ -14,6 +14,11 @@ Badminscore.addRegions(
     rgContent: "#content"
 )
 
+Marionette.Region.prototype.open = (view) ->
+    this.$el.hide()
+    this.$el.html(view.el)
+    this.$el.fadeIn("slow")
+
 # Initializer
 Badminscore.addInitializer((options) ->
     Badminscore.controller = new Badminscore.MainController()
