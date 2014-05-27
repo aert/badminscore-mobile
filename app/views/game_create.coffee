@@ -1,7 +1,7 @@
-# Badminscore.Views.NewGame
+# game_create.coffee
 
-class Badminscore.Views.NewGame extends Backbone.Marionette.View
-    className: 'view-newGame'
+class Badminscore.Views.GameCreate extends Backbone.Marionette.View
+    className: 'view-gameCreate'
 
     initialize: (model) ->
         @model = model
@@ -121,7 +121,7 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
 
     # -- Render ---------------------------------------------------------------
     render: () ->
-        template = _.template($('#template-newGame').html())
+        template = _.template($('#template-gameCreate').html())
         this.$el.html(template)
         this.stickit()
         return this

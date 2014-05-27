@@ -16,9 +16,9 @@ class Badminscore.MainController extends Backbone.Marionette.Controller
         #view = new Badminscore.Views.Index()
         this.gotoPage(view, 'nav-ongoing')
 
-    showNewGame: () ->
+    showGameCreate: () ->
         model = new Badminscore.Models.Game()
-        view = new Badminscore.Views.NewGame(model)
+        view = new Badminscore.Views.GameCreate(model)
         this.gotoPage(view, 'nav-new')
 
     showGameDetails: (id) ->

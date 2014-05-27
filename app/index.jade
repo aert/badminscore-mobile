@@ -35,9 +35,9 @@ html
         script(src=".tmp/app/models/navigation.js")
         script(src=".tmp/app/models/game.js")
         script(src=".tmp/app/views/_game_itemview.js")
-        script(src=".tmp/app/views/game_details.js")
         script(src=".tmp/app/views/navigation.js")
-        script(src=".tmp/app/views/new_game.js")
+        script(src=".tmp/app/views/game_create.js")
+        script(src=".tmp/app/views/game_details.js")
         script(src=".tmp/app/main.js")
         // endbuild 
     body
@@ -55,9 +55,9 @@ html
 
         script(type="text/template", id="template-navigation")
             include templates/_navigation
-        script(type="text/template", id="template-newGame")
-            include templates/new_game
         script(type="text/template", id="template-control-score")
             include templates/_control_score
+        script(type="text/template", id="template-gameCreate")
+            include templates/game_create
         script(type="text/template", id="template-gameDetails")
             include templates/game_details
