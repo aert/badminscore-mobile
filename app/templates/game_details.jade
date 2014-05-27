@@ -1,3 +1,64 @@
 // game_details.jade
 
+| <% 
+|     var txtField = model.get("field");
+|     var txtService = model.getLabelService();
+|     var txtScore1 = model.get("totalScore1");
+|     var txtScore2 = model.get("totalScore2");
+|     var isDouble = model.get("isTypeDouble");
+ 
+|     if(isDouble) {
+|         var txtPlayerA1 = model.getOptList()[1];
+|         var txtPlayerA2 = model.getOptList()[2];
+|         var txtPlayerB1 = model.getOptList()[3];
+|         var txtPlayerB2 = model.getOptList()[4];
+|     } else {
+|         var txtPlayer1 = model.getOptList()[1];
+|         var txtPlayer2 = model.getOptList()[2];
+|     };
+
+|     var idxService = model.get("servicePlayer") || 0;
+|     idxService = idxService - 1;
+|     var flagService = ["", "", "", ""];
+|     if (idxService >= 0)
+|         flagService[idxService] = "&nbsp;<span class='text-success'>(service)</span>";
+
+|     var idxReception = model.get("receiverPlayer") || 0;
+|     idxReception = idxReception - 1;
+|     var flagReception = ["", "", "", ""];
+|     if (idxReception >= 0)
+|         flagReception[idxReception] = "&nbsp;<span class='text-warning'>(réception)</span>";
+| %>
+
 .well
+    .page-header
+        h1 <%= txtField %>
+            small &nbsp;<%= txtScore1 %>&nbsp;-&nbsp;<%= txtScore2 %>
+    br
+    ul.list-group
+        li.list-group-item
+            span.badge <%= txtScore1 %>
+            | <% if(isDouble) { %>
+            h4.list-group-item-heading
+                span.text-muted Equipe A
+            | <% }; %>
+            p.list-group-item-text
+                | <% if(isDouble) { %>
+                |     <%= txtPlayerA1 %> <%= flagService[0] %><%= flagReception[0] %><br/>
+                |     <%= txtPlayerA2 %> <%= flagService[1] %><%= flagReception[1] %><br/>
+                | <% } else { %>
+                |     <%= txtPlayer1 %> <%= flagService[0] %><%= flagReception[0] %><br/>
+                | <% }; %>
+        li.list-group-item
+            span.badge <%= txtScore2 %>
+            | <% if(isDouble) { %>
+            h4.list-group-item-heading
+                span.text-muted Equipe B
+            | <% }; %>
+            p.list-group-item-text
+                | <% if(isDouble) { %>
+                |     <%= txtPlayerB1 %> <%= flagService[2] %><%= flagReception[2] %><br/>
+                |     <%= txtPlayerB2 %> <%= flagService[3] %><%= flagReception[3] %><br/>
+                | <% } else { %>
+                |     <%= txtPlayer2 %> <%= flagService[1] %><%= flagReception[1] %><br/>
+                | <% }; %>
