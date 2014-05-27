@@ -15,7 +15,8 @@ class Badminscore.Views.GameItemView extends Backbone.Marionette.ItemView
         return this
 
     onClick: () ->
-        alert("OK")
+        id = @model.get("id")
+        Badminscore.router.navigate("game/#{id}", trigger: true)
 
 class Badminscore.Views.GameCollectionView extends Backbone.Marionette.CollectionView
     itemView: Badminscore.Views.GameItemView

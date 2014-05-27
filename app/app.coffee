@@ -29,6 +29,7 @@ Badminscore.addInitializer((options) ->
 
     Badminscore.Data.games.add([
         {
+            id: "1"
             refereeFirstname: "Blake", refereeSurname: "Mortimer", field: "Riedisheim Gambetta", isTypeDouble: true,
             playerA1Firstname: "Carlos", playerA1Surname: "B.", playerA2Firstname: "Adam", playerA2Surname: "C.",
             playerB1Firstname: "Alexandre", playerB1Surname: "H.", playerB2Firstname: "Julien", playerB2Surname: "F.",
@@ -36,6 +37,7 @@ Badminscore.addInitializer((options) ->
             totalScore1: 15, totalScore2: 10
         },
         {
+            id: "2"
             refereeFirstname: "Blake", refereeSurname: "Mortimer",
             field: "Habsheim", isTypeDouble: false,
             player1Firstname: "Romain", player1Surname: "S.", player2Firstname: "Lorraine", player2Surname: "B.",
@@ -43,6 +45,7 @@ Badminscore.addInitializer((options) ->
             totalScore1: 12, totalScore2: 4
         },
         {
+            id: "3"
             refereeFirstname: "Blake", refereeSurname: "Mortimer",
             field: "01", isTypeDouble: false,
             player1Firstname: "Samuel", player1Surname: "E.", player2Firstname: "Nicolas", player2Surname: "H.",
@@ -50,6 +53,7 @@ Badminscore.addInitializer((options) ->
             totalScore1: 9, totalScore2: 10
         },
         {
+            id: "4"
             refereeFirstname: "Blake", refereeSurname: "Mortimer",
             field: "ASPTT Strasbourg", isTypeDouble: false,
             player1Firstname: "Valérie", player1Surname: "A.", player2Firstname: "Katia", player2Surname: "N.",
@@ -57,6 +61,7 @@ Badminscore.addInitializer((options) ->
             totalScore1: 3, totalScore2: 11
         },
         {
+            id: "5"
             refereeFirstname: "Blake", refereeSurname: "Mortimer",
             field: "ASPTT Strasbourg", isTypeDouble: false,
             player1Firstname: "Christophe", player1Surname: "B.", player2Firstname: "Marianne", player2Surname: "N.",

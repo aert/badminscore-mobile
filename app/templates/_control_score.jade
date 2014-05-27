@@ -26,13 +26,13 @@
             h1 <%= txtScore1 %> - <%= txtScore2 %>
             p.menuitem.text-muted
                 | <% if(isDouble) { %>
-                span <%= txtPlayerA1 %> <br/> <%= txtPlayerA2 %>
+                span <%= txtPlayerA1 %>&nbsp; <br/> <%= txtPlayerA2 %>&nbsp;
                 small.vs vs
-                span <%= txtPlayerB1 %> <br/> <%= txtPlayerB2 %>
+                span <%= txtPlayerB1 %>&nbsp; <br/> <%= txtPlayerB2 %>&nbsp;
                 | <% } else { %>
                 span <%= txtPlayer1 %> <br/>&nbsp; 
                 small.vs vs
                 span <%= txtPlayer2 %> <br/>&nbsp;
                 | <% } %>
     .panel-footer.text-center
-        span <%= txtField %>
+        span <%= txtField %>&nbsp;

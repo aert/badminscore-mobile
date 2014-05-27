@@ -71,7 +71,8 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         @model.set("receiverPlayer", newValue)
 
     onBtnSave: () ->
-        Badminscore.Data.games.add(@model)
+        @model.set("id", Badminscore.Data.games.length + 1)
+        Badminscore.Data.games.add(@model, at: 0)
         
         this.$el.find('#newGameConfirm').modal("hide")
         this.$el.find('#newGameConfirm').on("hidden.bs.modal", (e) ->

@@ -21,6 +21,16 @@ class Badminscore.MainController extends Backbone.Marionette.Controller
         view = new Badminscore.Views.NewGame(model)
         this.gotoPage(view, 'nav-new')
 
+    showGameDetails: (id) ->
+        id = parseInt(id)
+        if isNaN(id) or id > Badminscore.Data.games.length
+            Badminscore.router.navigate('', trigger: true)
+            return
+
+        model = Badminscore.Data.games.get(id)
+        view = new Badminscore.Views.GameDetails(model)
+        this.gotoPage(view, 'nav-ongoing')
+
     # -- Private Methods ------------------------------------------------------
     gotoPage: (view, navId) ->
         Badminscore.rgContent.show(view)
