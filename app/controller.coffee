@@ -12,8 +12,7 @@ class Badminscore.MainController extends Backbone.Marionette.Controller
 
     # -- Views ----------------------------------------------------------------
     showIndex: () ->
-        view = new Badminscore.Views.GameCollectionView(collection: Badminscore.Data.games)
-        #view = new Badminscore.Views.Index()
+        view = new Badminscore.Views.GameCollection(collection: Badminscore.Data.games)
         this.gotoPage(view, 'nav-ongoing')
 
     showGameCreate: () ->

@@ -1,6 +1,6 @@
 # _game_itemview.coffee
 
-class Badminscore.Views.GameItemView extends Backbone.Marionette.ItemView
+class Badminscore.Views.GameItem extends Backbone.Marionette.ItemView
 
     model: Badminscore.Views.Game
     tagName: "li"
@@ -10,7 +10,7 @@ class Badminscore.Views.GameItemView extends Backbone.Marionette.ItemView
         "click": "onClick"
     
     render: () ->
-        template = _.template($('#template-control-score').html(), model: @model)
+        template = _.template($('#template-gameListItem').html(), model: @model)
         this.$el.html(template)
         return this
 
@@ -18,7 +18,7 @@ class Badminscore.Views.GameItemView extends Backbone.Marionette.ItemView
         id = @model.get("id")
         Badminscore.router.navigate("game/#{id}", trigger: true)
 
-class Badminscore.Views.GameCollectionView extends Backbone.Marionette.CollectionView
-    itemView: Badminscore.Views.GameItemView
+class Badminscore.Views.GameCollection extends Backbone.Marionette.CollectionView
+    itemView: Badminscore.Views.GameItem
     tagName: "ul"
     className: "row"
