@@ -5,7 +5,7 @@ ul.nav.nav-pills
     a(href="#")
         span.glyphicon.glyphicon-play-circle
         | &nbsp; Parties en cours
-        span.badge 5
+        span.badge <%= Badminscore.Data.games.length %>
     | </li>
     | <li class="<%= model.getFlagActive('nav-done') %>">
     //a(href="#") 

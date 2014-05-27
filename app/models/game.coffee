@@ -27,6 +27,9 @@ class Badminscore.Models.Game extends Backbone.Model
         servicePlayer: 0
         receiverPlayer: 0
 
+        totalScore1: 0
+        totalScore2: 0
+
     getOptList: () ->
         optList = []
         optList.push('---')
@@ -42,6 +45,14 @@ class Badminscore.Models.Game extends Backbone.Model
 
         return optList
 
+    getLabelService: () ->
+        servicePlayer = this.get("servicePlayer") or 0
+
+        if servicePlayer < 1
+            return "---"
+
+        optList = this.getOptList()
+        return optList[servicePlayer]
 
     bindServiceOptions: ($select) ->
         $select.empty()
@@ -96,6 +107,9 @@ class Badminscore.Models.Game extends Backbone.Model
                 .text(optList[idx])
             )
         return
+
+class Badminscore.Models.GameCollection extends Backbone.Collection
+    model: Badminscore.Models.Game
 
 
 

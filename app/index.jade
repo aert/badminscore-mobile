@@ -34,8 +34,8 @@ html
         script(src=".tmp/app/controller.js")
         script(src=".tmp/app/models/navigation.js")
         script(src=".tmp/app/models/game.js")
+        script(src=".tmp/app/views/_game_itemview.js")
         script(src=".tmp/app/views/navigation.js")
-        script(src=".tmp/app/views/index.js")
         script(src=".tmp/app/views/new_game.js")
         script(src=".tmp/app/main.js")
         // endbuild 
@@ -54,7 +54,7 @@ html
 
         script(type="text/template", id="template-navigation")
             include templates/_navigation
-        script(type="text/template", id="template-index")
-            include templates/plays_ongoing
         script(type="text/template", id="template-newGame")
             include templates/new_game
+        script(type="text/template", id="template-control-score")
+            include templates/_control_score

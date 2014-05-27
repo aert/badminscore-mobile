@@ -1,0 +1,38 @@
+// _control_score.jade
+
+| <% 
+|     var txtField = model.get("field");
+|     var txtService = model.getLabelService();
+|     var txtScore1 = model.get("totalScore1");
+|     var txtScore2 = model.get("totalScore2");
+|     var isDouble = model.get("isTypeDouble");
+| 
+|     if(isDouble) {
+|         var txtPlayerA1 = model.getOptList()[1];
+|         var txtPlayerA2 = model.getOptList()[2];
+|         var txtPlayerB1 = model.getOptList()[3];
+|         var txtPlayerB2 = model.getOptList()[4];
+|     } else {
+|         var txtPlayer1 = model.getOptList()[1];
+|         var txtPlayer2 = model.getOptList()[2];
+|     }
+| %>
+
+.panel.panel-default
+    .panel-body
+        small.text-muted Service : 
+            b.text-success <%= txtService %>
+        .text-center
+            h1 <%= txtScore1 %> - <%= txtScore2 %>
+            p.menuitem.text-muted
+                | <% if(isDouble) { %>
+                span <%= txtPlayerA1 %> <br/> <%= txtPlayerA2 %>
+                small.vs vs
+                span <%= txtPlayerB1 %> <br/> <%= txtPlayerB2 %>
+                | <% } else { %>
+                span <%= txtPlayer1 %> <br/>&nbsp; 
+                small.vs vs
+                span <%= txtPlayer2 %> <br/>&nbsp;
+                | <% } %>
+    .panel-footer.text-center
+        span <%= txtField %>

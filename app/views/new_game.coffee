@@ -14,6 +14,7 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
     events:
         "click .radPlayerCount": "onSwitchGameType"
         "click #btnNewGameFirst": "onBtnNewGameFirst"
+        "click #btnNewGameSecond": "onBtnSave"
         "change #servicePlayer": "onSelectServicePlayerChanged"
         "change #receiverPlayer": "onSelectReceiverPlayerChanged"
 
@@ -38,7 +39,7 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         '#playerB2Surname': 'playerB2Surname'
 
 
-    # -- Events ---------------------------------------------------------------
+    # -- UI Events ------------------------------------------------------------
     onSwitchGameType: () ->
         radValue = this.$el.find("input[name=radPlayerCount]:checked").val()
 
@@ -65,10 +66,18 @@ class Badminscore.Views.NewGame extends Backbone.Marionette.View
         @model.set("servicePlayer", newValue)
         this.$el.find("#receiverPlayer").val($("#receiverPlayer option:first").val())
         
-
     onSelectReceiverPlayerChanged: () ->
         newValue = parseInt(this.$el.find("#receiverPlayer").val()) or 0
         @model.set("receiverPlayer", newValue)
+
+    onBtnSave: () ->
+        Badminscore.Data.games.add(@model)
+        
+        this.$el.find('#newGameConfirm').modal("hide")
+        this.$el.find('#newGameConfirm').on("hidden.bs.modal", (e) ->
+            Badminscore.router.navigate('', trigger: true)
+        )
+
 
     # -- Model Changes --------------------------------------------------------
     

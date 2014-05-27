@@ -5,6 +5,28 @@ body {
     //background-color: #1D1D1D;
 }
 
+ul.row {
+    padding-left: 0px;
+}
+
+li.score {
+    display: inline-block;
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    cursor: pointer;
+    
+    // SM
+    @media (min-width: 768px) { 
+        width: 50%;
+    }
+
+    // MD
+    @media (min-width: 992px) { 
+        width: 30%;
+    }
+}
+
 /* Phone */
 .form-control {
     margin-bottom: 5px;
