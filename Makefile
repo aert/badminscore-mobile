@@ -4,5 +4,8 @@ bootstrap:
 	pip install nodeenv
 	nodeenv -p
 
-make runserver:
+runserver:
 	cd build; python -m SimpleHTTPServer
+
+deploy:
+	fab h_remote deploy
