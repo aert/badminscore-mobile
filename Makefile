@@ -8,4 +8,4 @@ runserver:
 	cd build; python -m SimpleHTTPServer
 
 deploy:
-	fab h_remote deploy
+	grunt && fab h_remote deploy
