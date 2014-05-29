@@ -33,15 +33,12 @@
 | %>
 
 .well
-    //.page-header
-        h1 <%= txtField %>
-            small &nbsp;<%= txtScore1 %>&nbsp;-&nbsp;<%= txtScore2 %>
     ol.breadcrumb
         li: a(href="#") En cours
         li.active: <%= txtField %>
 
     .num-play
-        ul.pagination.pagination-lg
+        ul.pagination
             li: a(href="#") &laquo;
             li: a(href="#") <span class="badge">Échange <%= numPlay %></span>
             li: a(href="#") &raquo;
