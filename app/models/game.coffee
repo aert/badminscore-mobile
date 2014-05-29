@@ -30,6 +30,36 @@ class Badminscore.Models.Game extends Backbone.Model
         totalScore1: 0
         totalScore2: 0
 
+        exchangeResults: []
+
+    initialize: () ->
+        this.on("change:exchangeResults", this.refreshScore())
+
+    refreshScore: () ->
+        totalScore1 = 0
+        totalScore2 = 0
+        exchangeResults = this.get("exchangeResults")
+
+        for r in exchangeResults
+            if r == "A"
+                totalScore1++
+            else
+                totalScore2++
+        this.set("totalScore1", totalScore1)
+        this.set("totalScore2", totalScore2)
+
+    addExchangeResultA: () ->
+        exchanges = this.get("exchangeResults")
+        exchanges.push("A")
+        this.set("exchangeResults", exchanges)
+        #this.refreshScore()
+
+    addExchangeResultB: () ->
+        exchanges = this.get("exchangeResults")
+        exchanges.push("B")
+        this.set("exchangeResults", exchanges)
+        #this.refreshScore()
+
     getOptList: () ->
         optList = []
         optList.push('---')
