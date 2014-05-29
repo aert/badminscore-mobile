@@ -48,17 +48,67 @@ class Badminscore.Models.Game extends Backbone.Model
         this.set("totalScore1", totalScore1)
         this.set("totalScore2", totalScore2)
 
+    getWinner: (numPlay) ->
+        exchangeResults = this.get("exchangeResults")
+        if numPlay < 0 or numPlay >= exchangeResults.length
+            return "---"
+        
+        playerA = this.getLabelPlayerA()
+        playerB = this.getLabelPlayerB()
+
+        if exchangeResults[numPlay] == "A"
+            return playerA
+        if exchangeResults[numPlay] == "B"
+            return playerB
+        return "---"
+
+    getLabelPlayerA: () ->
+        if this.get("isTypeDouble") == false
+            optList = this.getOptList()
+            playerA = optList[1]
+        else
+            playerA = "Equipe A"
+
+    getLabelPlayerB: () ->
+        if this.get("isTypeDouble") == false
+            optList = this.getOptList()
+            playerA = optList[2]
+        else
+            playerA = "Equipe B"
+
+    getScoreA: (numPlay) ->
+        exchangeResults = this.get("exchangeResults")
+        if numPlay >= exchangeResults.length
+            return this.get("totalScore1")
+
+        score = 0
+        for i in [0..numPlay]
+            if exchangeResults[i] == "A"
+                score++
+        return score
+
+    getScoreB: (numPlay) ->
+        exchangeResults = this.get("exchangeResults")
+        if numPlay >= exchangeResults.length
+            return this.get("totalScore2")
+
+        score = 0
+        for i in [0..numPlay]
+            if exchangeResults[i] == "B"
+                score++
+        return score
+
     addExchangeResultA: () ->
         exchanges = this.get("exchangeResults")
         exchanges.push("A")
         this.set("exchangeResults", exchanges)
-        #this.refreshScore()
+        this.refreshScore()
 
     addExchangeResultB: () ->
         exchanges = this.get("exchangeResults")
         exchanges.push("B")
         this.set("exchangeResults", exchanges)
-        #this.refreshScore()
+        this.refreshScore()
 
     getOptList: () ->
         optList = []

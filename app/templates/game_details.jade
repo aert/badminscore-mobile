@@ -7,8 +7,6 @@
 |     var txtScore2 = model.get("totalScore2");
 |     var isDouble = model.get("isTypeDouble");
 
-|     var numPlay = txtScore1 + txtScore2;
- 
 |     if(isDouble) {
 |         var txtPlayerA1 = model.getOptList()[1];
 |         var txtPlayerA2 = model.getOptList()[2];
@@ -39,13 +37,22 @@
 
     .num-play
         ul.pagination
-            li: a(href="#") &laquo;
-            li: a(href="#") <span class="badge">Échange <%= numPlay %></span>
-            li: a(href="#") &raquo;
+            li: a#btnExchangeFirst.pointer <small>&larr;</small>
+            li: a#btnExchangePrevious.pointer &laquo;
+            li: a#btnExchange 
+                span.badge Échange 
+                    span#numPlay <%= numPlay %>
+            li: a#btnExchangeNext.pointer &raquo;
+            li: a#btnExchangeLast.pointer <small>&rarr;</small>
     br
+    #panExchangePast.text-center.row(style="display:none")
+        span.text-warning#lblExchangePastWinner
+        | <br/> gagne cet échange
+        br
+        br
     ul.list-group
         li.list-group-item.active
-            span.badge <%= txtScore1 %>
+            span#lblScoreA.badge <%= txtScore1 %>
             | <% if(isDouble) { %>
             h4.list-group-item-heading
                 span.text-info Equipe A
@@ -58,7 +65,7 @@
                 span.text-info.one-player  <%= txtPlayer1 %> <%= flagService[0] %> <%= flagReception[0] %><br/>
                 | <% }; %>
         li.list-group-item.active
-            span.badge <%= txtScore2 %>
+            span#lblScoreB.badge <%= txtScore2 %>
             | <% if(isDouble) { %>
             h4.list-group-item-heading
                 span.text-danger Equipe B
@@ -71,10 +78,9 @@
                 span.text-danger.one-player  <%= txtPlayer2 %> <%= flagService[1] %> <%= flagReception[1] %><br/>
                 | <% }; %>
     br
-    //hr
-    .row
+    #panExchangeCurrent.row
         .col-xs-6
-            button.btn.btn-lg.btn-info.btn-block
+            button#btnWinPlayerA.btn.btn-lg.btn-info.btn-block
                 | <% if(isDouble) { %>
                 |     <b>Equipe A</b>
                 | <% } else { %>
@@ -82,7 +88,7 @@
                 | <% }; %>
                 | <br/> Gagne
         .col-xs-6
-            button.btn.btn-lg.btn-danger.btn-block
+            button#btnWinPlayerB.btn.btn-lg.btn-danger.btn-block
                 | <% if(isDouble) { %>
                 |     <b>Equipe B</b>
                 | <% } else { %>

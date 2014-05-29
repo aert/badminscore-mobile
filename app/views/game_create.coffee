@@ -84,7 +84,6 @@ class Badminscore.Views.GameCreate extends Backbone.Marionette.View
     
     onModelChanged: () ->
         @changesCount++
-        console.log('changes: ' + @changesCount)
         enableBtnNewGameFirst = false
 
         hasRadValue = @model.get("isTypeDouble") != null
@@ -108,7 +107,6 @@ class Badminscore.Views.GameCreate extends Backbone.Marionette.View
         
     onModelReceiverPlayerChanged: () ->
         receiverPlayer = @model.get("receiverPlayer") or 0
-        console.log("onModelReceiverPlayerChanged" + receiverPlayer)
 
         if receiverPlayer < 1
             this.$el.find("#btnNewGameSecond").attr("disabled", "disabled")
