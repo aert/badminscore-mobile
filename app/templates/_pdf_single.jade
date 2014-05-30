@@ -9,25 +9,26 @@
     p Arbitre : 
         span#lblReferee <%= model.getLabelReferee() %>
 
-    table.table.table-bordered
-        tr
-            td G
-            td(rowspan=2)#fieldName.field <%= model.get("field") %>
-            td#pdfPlayer1 <%= model.getLabelPlayerA() %>
-            td#pdfDirection1
-            td.score 0
-            | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
-            td.score <%= model.getFeuilleScore(0, i) %>
-            | <% }; %>
-            td#totalScore1.totalScore 
-                span.label.label-primary <%= model.get("totalScore1") %>
-        tr
-            td D
-            td#pdfPlayer2 <%= model.getLabelPlayerB() %>
-            td#pdfDirection2
-            td.score 0
-            | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
-            td.score <%= model.getFeuilleScore(1, i) %>
-            | <% }; %>
-            td#totalScore2.totalScore 
-                span.label.label-primary <%= model.get("totalScore2") %>
+    .table-responsive
+        table.table.table-bordered
+            tr
+                td G
+                td(rowspan=2)#fieldName.field <%= model.get("field") %>
+                td#pdfPlayer1 <%= model.getLabelPlayerA() %>
+                td#pdfDirection1
+                td.score 0
+                | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
+                td.score <%= model.getFeuilleScore(0, i) %>
+                | <% }; %>
+                td#totalScore1.totalScore 
+                    span.label.label-primary <%= model.get("totalScore1") %>
+            tr
+                td D
+                td#pdfPlayer2 <%= model.getLabelPlayerB() %>
+                td#pdfDirection2
+                td.score 0
+                | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
+                td.score <%= model.getFeuilleScore(1, i) %>
+                | <% }; %>
+                td#totalScore2.totalScore 
+                    span.label.label-primary <%= model.get("totalScore2") %>
