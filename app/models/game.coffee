@@ -62,6 +62,86 @@ class Badminscore.Models.Game extends Backbone.Model
             return playerB
         return "---"
 
+    getServiceReceiver: (numPlay) ->
+        exchangeResults = this.get("exchangeResults")
+        servicePlayer = this.get("servicePlayer") - 1
+        receiverPlayer = this.get("receiverPlayer") - 1
+        isDouble = this.get("isTypeDouble")
+
+        if numPlay > exchangeResults.length
+            return [-1, -1]
+
+        winner = if exchangeResults[0] == "A" then 0 else 1
+
+        if not isDouble
+            if numPlay == 0
+                return [servicePlayer, receiverPlayer]
+            changeService = () ->
+                if servicePlayer == 0
+                    servicePlayer = 1
+                    receiverPlayer = 0
+                else
+                    servicePlayer = 0
+                    receiverPlayer = 1
+            for i in [1..numPlay]
+                if winner != servicePlayer
+                    changeService()
+                winner = if exchangeResults[i] == "A" then 0 else 1
+            return [servicePlayer, receiverPlayer]
+
+        # isDouble
+        if servicePlayer < 2
+            teamARight = servicePlayer
+            teamALeft = if servicePlayer == 0 then 1 else 0
+            teamBRight = receiverPlayer
+            teamBLeft = if receiverPlayer == 2 then 3 else 2
+        else
+            teamARight = receiverPlayer
+            teamALeft = if receiverPlayer == 0 then 1 else 0
+            teamBRight = servicePlayer
+            teamBLeft = if servicePlayer == 2 then 3 else 2
+
+        if numPlay == 0
+            return [servicePlayer, receiverPlayer, teamARight, teamALeft, teamBRight, teamBLeft]
+
+        updateServiceSide = (model, currentNumPlay) ->
+            totalScore1 = model.getScoreA(currentNumPlay - 1)
+            totalScore2 = model.getScoreB(currentNumPlay - 1)
+
+            if servicePlayer < 2
+                if totalScore1 % 2 == 0
+                    teamARight = servicePlayer
+                    teamALeft = if servicePlayer == 0 then 1 else 0
+                    receiverPlayer = teamBRight
+                else
+                    teamALeft = servicePlayer
+                    teamARight = if servicePlayer == 0 then 1 else 0
+                    receiverPlayer = teamBLeft
+            else
+                if totalScore2 % 2 == 0
+                    teamBRight = servicePlayer
+                    teamBLeft = if servicePlayer == 2 then 3 else 2
+                    receiverPlayer = teamARight
+                else
+                    teamBLeft = servicePlayer
+                    teamBRight = if servicePlayer == 2 then 3 else 2
+                    receiverPlayer = teamALeft
+
+        changeService = () ->
+            servicePlayer = receiverPlayer
+
+        servicePlayerTeam = (player) -> return if player > 1 then 1 else 0
+        winner = if exchangeResults[0] == "A" then 0 else 1
+
+        for i in [1..numPlay]
+            if winner != servicePlayerTeam(servicePlayer)
+                changeService()
+            updateServiceSide(this, i)
+            winner = if exchangeResults[i] == "A" then 0 else 1
+        return [servicePlayer, receiverPlayer, teamARight, teamALeft, teamBRight, teamBLeft]
+
+
+
     getLabelPlayerA: () ->
         if this.get("isTypeDouble") == false
             optList = this.getOptList()

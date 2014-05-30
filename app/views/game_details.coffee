@@ -25,6 +25,13 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
         lblExchangePastWinner: "#lblExchangePastWinner"
         lblScoreA: "#lblScoreA"
         lblScoreB: "#lblScoreB"
+        lblFlagPlayer1: "#lblFlagPlayer1"
+        lblFlagPlayer2: "#lblFlagPlayer2"
+        lblFlagPlayerA1: "#lblFlagPlayerA1"
+        lblFlagPlayerA2: "#lblFlagPlayerA2"
+        lblFlagPlayerB1: "#lblFlagPlayerB1"
+        lblFlagPlayerB2: "#lblFlagPlayerB2"
+        playersPlacement: "#playersPlacement"
 
     render: () ->
         # render template
@@ -32,6 +39,9 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
                               model: @model, numPlay: @numPlay + 1)
         this.$el.html(template)
         return this
+
+    onShow: () ->
+        this.bindModel()
 
     # -- UI Events ------------------------------------------------------------
 
@@ -82,13 +92,28 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
     bindModel: () ->
         $(@ui.numPlay).html(@numPlay + 1)
 
+        $(@ui.playersPlacement).hide()
         $(@ui.panExchangeCurrent).hide()
         $(@ui.panExchangePast).hide()
         $(@ui.lblScoreA).hide()
         $(@ui.lblScoreB).hide()
+        $(@ui.lblFlagPlayer1).hide()
+        $(@ui.lblFlagPlayer2).hide()
+        $(@ui.lblFlagPlayerA1).hide()
+        $(@ui.lblFlagPlayerA2).hide()
+        $(@ui.lblFlagPlayerB1).hide()
+        $(@ui.lblFlagPlayerB2).hide()
 
         $(@ui.lblScoreA).html(@model.getScoreA(@numPlay))
         $(@ui.lblScoreB).html(@model.getScoreB(@numPlay))
+
+        placementData = @model.getServiceReceiver(@numPlay)
+        $(@ui.lblFlagPlayer1).html(this.getFlag(placementData, 0))
+        $(@ui.lblFlagPlayer2).html(this.getFlag(placementData, 1))
+        $(@ui.lblFlagPlayerA1).html(this.getFlag(placementData, 0))
+        $(@ui.lblFlagPlayerA2).html(this.getFlag(placementData, 1))
+        $(@ui.lblFlagPlayerB1).html(this.getFlag(placementData, 2))
+        $(@ui.lblFlagPlayerB2).html(this.getFlag(placementData, 3))
 
         if @numPlay == @maxNumPlay
             $(@ui.panExchangeCurrent).fadeIn()
@@ -98,3 +123,47 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
 
         $(@ui.lblScoreA).fadeIn()
         $(@ui.lblScoreB).fadeIn()
+        $(@ui.lblFlagPlayer1).fadeIn()
+        $(@ui.lblFlagPlayer2).fadeIn()
+        $(@ui.lblFlagPlayerA1).fadeIn()
+        $(@ui.lblFlagPlayerA2).fadeIn()
+        $(@ui.lblFlagPlayerB1).fadeIn()
+        $(@ui.lblFlagPlayerB2).fadeIn()
+
+        if(@model.get("isTypeDouble") == true)
+            this.updatePlacementUi(placementData)
+            $(@ui.playersPlacement).fadeIn()
+
+    updatePlacementUi: (placementData) ->
+        [servicePlayer, receiverPlayer, teamARight, teamALeft, teamBRight, teamBLeft] = placementData
+        optList = @model.getOptList()
+        this.$el.find("#teamARight").html(optList[teamARight+1]).attr("class", @getTdFlag(placementData, teamARight))
+        this.$el.find("#teamALeft").html(optList[teamALeft+1]).attr("class", @getTdFlag(placementData, teamALeft))
+        this.$el.find("#teamBRight").html(optList[teamBRight+1]).attr("class", @getTdFlag(placementData, teamBRight))
+        this.$el.find("#teamBLeft").html(optList[teamBLeft+1]).attr("class", @getTdFlag(placementData, teamBLeft))
+        
+
+    getFlag: (placementData, numPlayer) ->
+        [servicePlayer, receiverPlayer] = placementData
+            
+        if servicePlayer == -1
+            return "---"
+        if servicePlayer == numPlayer
+            return "&nbsp;<span class='text-success'><small>service</small></span>"
+        else if receiverPlayer == numPlayer
+            return "&nbsp;<span class='text-warning'><small>réception</small></span>"
+        else
+            return ""
+
+    getTdFlag: (placementData, numPlayer) ->
+        [servicePlayer, receiverPlayer] = placementData
+            
+        if servicePlayer == -1
+            return "---"
+        if servicePlayer == numPlayer
+            return "success"
+        else if receiverPlayer == numPlayer
+            return "warning"
+        else
+            return ""
+

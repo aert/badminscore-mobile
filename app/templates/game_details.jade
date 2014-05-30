@@ -16,18 +16,6 @@
 |         var txtPlayer1 = model.getOptList()[1];
 |         var txtPlayer2 = model.getOptList()[2];
 |     };
-
-|     var idxService = model.get("servicePlayer") || 0;
-|     idxService = idxService - 1;
-|     var flagService = ["", "", "", ""];
-|     if (idxService >= 0)
-|         flagService[idxService] = "&nbsp;<span class='text-success'><small>service</small></span>";
-
-|     var idxReception = model.get("receiverPlayer") || 0;
-|     idxReception = idxReception - 1;
-|     var flagReception = ["", "", "", ""];
-|     if (idxReception >= 0)
-|         flagReception[idxReception] = "&nbsp;<span class='text-warning'><small>réception</small></span>";
 | %>
 
 .well
@@ -59,10 +47,10 @@
             | <% }; %>
             p.list-group-item-text
                 | <% if(isDouble) { %>
-                |     <%= txtPlayerA1 %> <%= flagService[0] %><%= flagReception[0] %><br/>
-                |     <%= txtPlayerA2 %> <%= flagService[1] %><%= flagReception[1] %><br/>
+                |     <%= txtPlayerA1 %> <span id="lblFlagPlayerA1"/><br/>
+                |     <%= txtPlayerA2 %> <span id="lblFlagPlayerA2"/><br/>
                 | <% } else { %>
-                span.text-info.one-player  <%= txtPlayer1 %> <%= flagService[0] %> <%= flagReception[0] %><br/>
+                span.text-info.one-player  <%= txtPlayer1 %> <span id="lblFlagPlayer1"/><br/>
                 | <% }; %>
         li.list-group-item.active
             span#lblScoreB.badge <%= txtScore2 %>
@@ -72,11 +60,23 @@
             | <% }; %>
             p.list-group-item-text
                 | <% if(isDouble) { %>
-                |     <%= txtPlayerB1 %> <%= flagService[2] %><%= flagReception[2] %><br/>
-                |     <%= txtPlayerB2 %> <%= flagService[3] %><%= flagReception[3] %><br/>
+                |     <%= txtPlayerB1 %> <span id="lblFlagPlayerB1"/><br/>
+                |     <%= txtPlayerB2 %> <span id="lblFlagPlayerB2"/><br/>
                 | <% } else { %>
-                span.text-danger.one-player  <%= txtPlayer2 %> <%= flagService[1] %> <%= flagReception[1] %><br/>
+                span.text-danger.one-player  <%= txtPlayer2 %> <span id="lblFlagPlayer2"/><br/>
                 | <% }; %>
+    br
+    #playersPlacement.text-center(style="display:none")
+        .panel.panel-default
+            .panel-heading Terrain
+            table.table.table-bordered
+                tr
+                    td#teamARight
+                    td#teamBLeft
+                tr
+                    td#teamALeft
+                    td#teamBRight
+
     br
     #panExchangeCurrent.row
         .col-xs-6
