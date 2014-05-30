@@ -33,6 +33,12 @@
             li: a#btnExchangeNext.pointer &raquo;
             li: a#btnExchangeLast.pointer <small>&rarr;</small>
     br
+    | <% if(!isDouble) { %>
+    .text-center
+        p
+            button#btnPdfScoring.btn.btn-primary.btn-xs(type="button") Feuille de score
+    br
+    | <% }; %>
     #panExchangePast.text-center.row(style="display:none")
         span.text-warning#lblExchangePastWinner
         | <br/> gagne cet échange

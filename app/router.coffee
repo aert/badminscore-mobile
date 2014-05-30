@@ -6,4 +6,5 @@ class Badminscore.MainRouter extends Backbone.Marionette.AppRouter
         '': 'showIndex'
         'game/create': 'showGameCreate'
         'game/:id': 'showGameDetails'
+        'game/:id/paper': 'showGameDetailsPaper'
 

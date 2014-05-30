@@ -38,6 +38,7 @@ html
         script(src=".tmp/app/views/game_list_item.js")
         script(src=".tmp/app/views/game_create.js")
         script(src=".tmp/app/views/game_details.js")
+        script(src=".tmp/app/views/game_details_paper.js")
         script(src=".tmp/app/main.js")
         // endbuild 
     body
@@ -80,3 +81,5 @@ html
             include templates/game_create
         script(type="text/template", id="template-gameDetails")
             include templates/game_details
+        script(type="text/template", id="template-gameDetailsPaper")
+            include templates/_pdf_single

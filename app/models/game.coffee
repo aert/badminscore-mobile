@@ -48,6 +48,17 @@ class Badminscore.Models.Game extends Backbone.Model
         this.set("totalScore1", totalScore1)
         this.set("totalScore2", totalScore2)
 
+    getWinnerNum: (numPlay) ->
+        exchangeResults = this.get("exchangeResults")
+        if numPlay < 0 or numPlay >= exchangeResults.length
+            return "---"
+
+        if exchangeResults[numPlay] == "A"
+            return 0
+        if exchangeResults[numPlay] == "B"
+            return 1
+        return "---"
+        
     getWinner: (numPlay) ->
         exchangeResults = this.get("exchangeResults")
         if numPlay < 0 or numPlay >= exchangeResults.length
@@ -141,6 +152,8 @@ class Badminscore.Models.Game extends Backbone.Model
         return [servicePlayer, receiverPlayer, teamARight, teamALeft, teamBRight, teamBLeft]
 
 
+    getLabelReferee: () ->
+        return this.get("refereeSurname").toUpperCase() + " " + this.get("refereeFirstname")
 
     getLabelPlayerA: () ->
         if this.get("isTypeDouble") == false
@@ -155,6 +168,21 @@ class Badminscore.Models.Game extends Backbone.Model
             playerA = optList[2]
         else
             playerA = "Equipe B"
+
+    getFeuilleScore: (numPlayer, numPlay) ->
+        servicePlayer = this.getWinnerNum(numPlay)
+        if servicePlayer != numPlayer
+            return ""
+        if this.get("isTypeDouble") == false
+            if servicePlayer == 0
+                return this.getScoreA(numPlay)
+            else
+                return this.getScoreB(numPlay)
+        else
+            if servicePlayer < 2
+                return this.getScoreA(numPlay)
+            else
+                return this.getScoreB(numPlay)
 
     getScoreA: (numPlay) ->
         exchangeResults = this.get("exchangeResults")

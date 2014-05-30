@@ -18,6 +18,8 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
         "click #btnWinPlayerA" : "onBtnWinPlayerA"
         "click #btnWinPlayerB" : "onBtnWinPlayerB"
 
+        "click #btnPdfScoring" : "onBtnPdfScoring"
+
     ui:
         numPlay: "#numPlay"
         panExchangePast: "#panExchangePast"
@@ -34,7 +36,6 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
         playersPlacement: "#playersPlacement"
 
     render: () ->
-        # render template
         template = _.template($("#template-gameDetails").html(),
                               model: @model, numPlay: @numPlay + 1)
         this.$el.html(template)
@@ -86,6 +87,11 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
         @maxNumPlay++
         @numPlay = @maxNumPlay
         this.bindModel()
+
+    onBtnPdfScoring: () ->
+        id = @model.get("id")
+        Badminscore.router.navigate("game/#{id}/paper", trigger: true)
+
 
     # -- Private Methods ------------------------------------------------------
 
