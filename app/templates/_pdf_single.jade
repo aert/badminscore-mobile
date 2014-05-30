@@ -1,6 +1,6 @@
 // _pdf_single.jade
 
-.well
+.well.pdf
     ol.breadcrumb
         li: a(href="#") En cours
         li: a#modelDetailsLink <%= model.get("field") %>
@@ -9,7 +9,7 @@
     p Arbitre : 
         span#lblReferee <%= model.getLabelReferee() %>
 
-    table.table.table-bordered.pdf
+    table.table.table-bordered
         tr
             td G
             td(rowspan=2)#fieldName.field <%= model.get("field") %>
@@ -20,7 +20,7 @@
             td.score <%= model.getFeuilleScore(0, i) %>
             | <% }; %>
             td#totalScore1.totalScore 
-                span.badge <%= model.get("totalScore1") %>
+                span.label.label-primary <%= model.get("totalScore1") %>
         tr
             td D
             td#pdfPlayer2 <%= model.getLabelPlayerB() %>
@@ -30,4 +30,4 @@
             td.score <%= model.getFeuilleScore(1, i) %>
             | <% }; %>
             td#totalScore2.totalScore 
-                span.badge <%= model.get("totalScore2") %>
+                span.label.label-primary <%= model.get("totalScore2") %>

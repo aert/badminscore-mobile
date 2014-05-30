@@ -167,9 +167,9 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
         if servicePlayer == -1
             return "---"
         if servicePlayer == numPlayer
-            return "success"
+            return "text-success"
         else if receiverPlayer == numPlayer
-            return "warning"
+            return "text-warning"
         else
             return ""
 

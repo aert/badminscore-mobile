@@ -51,13 +51,21 @@ class Badminscore.Models.Game extends Backbone.Model
     getWinnerNum: (numPlay) ->
         exchangeResults = this.get("exchangeResults")
         if numPlay < 0 or numPlay >= exchangeResults.length
-            return "---"
+            return -1
 
-        if exchangeResults[numPlay] == "A"
-            return 0
-        if exchangeResults[numPlay] == "B"
-            return 1
-        return "---"
+        if this.get("isTypeDouble") == false
+            if exchangeResults[numPlay] == "A"
+                return 0
+            if exchangeResults[numPlay] == "B"
+                return 1
+        else
+            [servicePlayer, receiverPlayer] = @getServiceReceiver(numPlay)
+            if exchangeResults[numPlay] == "A"
+                return if servicePlayer < 2 then servicePlayer else receiverPlayer
+            if exchangeResults[numPlay] == "B"
+                return if servicePlayer >= 2 then servicePlayer else receiverPlayer
+
+        return -1
         
     getWinner: (numPlay) ->
         exchangeResults = this.get("exchangeResults")

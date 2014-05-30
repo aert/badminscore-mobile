@@ -1,0 +1,49 @@
+// _pdf_double.jade
+
+.well.pdf
+    ol.breadcrumb
+        li: a(href="#") En cours
+        li: a#modelDetailsLink <%= model.get("field") %>
+        li.active Feuille de scores
+
+    p Arbitre : 
+        span#lblReferee <%= model.getLabelReferee() %>
+
+    .table-responsive
+        table.table.table-bordered
+            tr
+                td G
+                td(rowspan=4)#fieldName.field <%= model.get("field") %>
+                td#pdfPlayer1 <%= model.getOptList()[1] %>
+                td#pdfDirection0
+                td.score 0
+                | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
+                td.score <%= model.getFeuilleScore(0, i) %>
+                | <% }; %>
+                td#totalScore1.totalScore(rowspan=2)
+                    span.label.label-primary <%= model.get("totalScore1") %>
+            tr
+                td(rowspan=2)
+                td#pdfPlayer1.light-bg <%= model.getOptList()[2] %>
+                td#pdfDirection1.light-bg
+                td.score.light-bg 0
+                | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
+                td.score.light-bg <%= model.getFeuilleScore(1, i) %>
+                | <% }; %>
+            tr
+                td#pdfPlayer1 <%= model.getOptList()[3] %>
+                td#pdfDirection2
+                td.score 0
+                | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
+                td.score <%= model.getFeuilleScore(2, i) %>
+                | <% }; %>
+                td#totalScore1.totalScore(rowspan=2)
+                    span.label.label-primary <%= model.get("totalScore2") %>
+            tr
+                td D
+                td#pdfPlayer2.light-bg <%= model.getOptList()[4] %>
+                td#pdfDirection3.light-bg
+                td.score.light-bg 0
+                | <% for(i = 0; i< model.get("exchangeResults").length; i++)  {%>
+                td.score.light-bg <%= model.getFeuilleScore(3, i) %>
+                | <% }; %>
