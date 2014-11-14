@@ -1,8 +1,13 @@
 
 
 bootstrap:
-	pip install nodeenv
+	pip install nodeenv fabric
 	nodeenv -p
+
+bootstrap_end:
+	npm install
+	bower-exec install
+	grunt
 
 runserver:
 	cd build; python -m SimpleHTTPServer
