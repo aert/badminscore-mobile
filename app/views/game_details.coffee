@@ -68,9 +68,9 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
 
     onBtnWinPlayerA: () ->
         player = @model.getLabelPlayerA()
-        r = confirm("#{player} gagne ?")
-        if not r
-            return
+        #r = confirm("#{player} gagne ?")
+        #if not r
+        #    return
 
         @model.addExchangeResultA()
         @maxNumPlay++
@@ -79,9 +79,9 @@ class Badminscore.Views.GameDetails extends Backbone.Marionette.View
 
     onBtnWinPlayerB: () ->
         player = @model.getLabelPlayerB()
-        r = confirm("#{player} gagne ?")
-        if not r
-            return
+        #r = confirm("#{player} gagne ?")
+        #if not r
+        #    return
 
         @model.addExchangeResultB()
         @maxNumPlay++
